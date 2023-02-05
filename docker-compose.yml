@@ -1,0 +1,25 @@
+version: '3'
+services:
+  ezchat-server:
+    environment:
+      - NODE_ENV=production
+    build:
+      context: server
+      dockerfile: Dockerfile
+    container_name: ezchat-server
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
+    command: node index.js
+  ezchat-frontend:
+    environment:
+      - NODE_ENV=production
+    build:
+      context: ezchat
+      dockerfile: Dockerfile
+    container_name: ezchat-frontend
+    expose:
+      - '8080'
+    ports:
+      - '8080:80'
